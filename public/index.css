@@ -1,0 +1,25 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+}
+
+.container {
+	padding: 10px 20px;
+	border-bottom: 1px solid pink;
+	width: 300px;
+} 
+
+h2 , .create-button {
+	margin-left: 20px ;
+}
+
+textarea {
+
+	height: 20px;
+	width: 150px;
+}
+
+.text {
+	padding-left: 20px;
+}

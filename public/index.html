@@ -2,15 +2,42 @@
 <html>
   <head>
     <title>Cupcake Flavor Management</title>
+    <link href="index.css" rel="stylesheet"/>
+  </head>
+  <body>
+  
+      <h2>Add Your Cupcake</h2> 
+      <div class="text">
+        <textarea id="cake" placeholder="cake type"></textarea> 
+        <textarea id="icing" placeholder="icing type"></textarea>
+        <textarea id="sprinkles" placeholder="sprinkles or nah?"></textarea>
+      </div>    
+      <button class="create-button">Add Cupcake</button>
+   
+    <div id="big-box">
+
+    </div>
+
+    <template id ="cupcake-box">
+
+      <div class= "container">
+        <div class= "cupcake-list">
+          <div> Icing: {{icing}}</div>
+          <div> Cake: {{cake}}</div>
+          <div> Sprinkles: {{sprinkles}}</div>
+        </div>
+        <div class="cupcake-buttons">
+          
+          <button class="edit-button">Edit Cupcake</button>
+          <button class="delete-button">Delete Cupcake</button>
+        </div>
+      </div>
+    </template>
 
     <script src="libs/underscore.js"></script>
     <script src="libs/jquery.js"></script>
     <script src="libs/handlebars.js"></script>
     <script src="libs/backbone.js"></script>
-
-  </head>
-  <body>
-    
     <script src="cupcakes.js"></script>
 
   </body>
