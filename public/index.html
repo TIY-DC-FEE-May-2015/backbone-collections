@@ -8,8 +8,83 @@
     <script src="libs/handlebars.js"></script>
     <script src="libs/backbone.js"></script>
 
+    <link href="cupcake.css" rel="stylesheet" />
+
   </head>
   <body>
+
+    <div class="cupcake-container">
+
+      <div class="header-container">cupcakes. yum.</div>
+
+      <div class="list-container">
+        <div class="listHeader">take your pick.</div>
+        <div id="cupcakeList">
+          <!-- Insert Template -->
+        </div>
+
+        <div id="edit-list">
+
+          <div class="edit-list-title">Add New Flavors!</div>
+
+          <div class="input">
+            <input type="text" placeholder="cake flavor" id="newCake"></input>
+          </div>
+          
+          <div class="input">
+            <input type="text" placeholder="icing flavor" id="newIcing"></input>
+          </div>
+          <!--
+          <div class="input">
+            <input type="text" placeholder="sprinkles"></input>
+          </div>-->
+
+          <button class="submit-button">submit</button>
+
+        </div>
+      </div>
+
+      <div class="random-container">
+
+        <div class="random-title">Featured Flavor</div>
+
+        <div id="randomCupcake">
+          <!-- Insert Template -->
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+<!-- Template Start -->
+    <template id="cupcakeTemplate">
+
+      <div class="stats">
+
+        <div class="cake">Cake Flavor: {{ cake }}</div>
+
+        <div class="icing">Icing Flavor:{{ icing }}</div>
+
+        <div class="sprinkles">Sprinkles: {{ sprinkles }}</div>
+
+        <div class="quantity">Qty: {{ quantity }}</div>
+
+      </div>
+
+      <div class="buttons">
+  
+        <button class="increase-button">plus one</button>
+
+        <button class="decrease-button">minus one</button>
+
+         <button class="sprinkle-button">sprinkles?</button>
+
+        <button class="delete-button">delete cupcake</button>
+      </div>
+
+    </template>
     
     <script src="cupcakes.js"></script>
 
