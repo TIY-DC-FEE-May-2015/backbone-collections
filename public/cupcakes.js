@@ -1,3 +1,4 @@
+var currentCupcake
 var Cupcake = Backbone.Model.extend({
 
 	defaults: {
@@ -15,7 +16,7 @@ var Cupcake = Backbone.Model.extend({
 		if (this.get("sprinkles") === false) {
 			console.log(this)
 			this.set({
-				sprinkles: this.get("sprinkles") === true
+				sprinkles: true
 			})
 		}
 		else {
@@ -39,20 +40,6 @@ var Cupcake = Backbone.Model.extend({
 		}
 	},
 
-	newFlavor: function() {
-		var input = new Cupcake( {
-			name: $("#newCake").val(),
-			icing: $("#newIcing").val()
-		})
-
-		console.log(input)
-
-		input.save()
-		this.collection.add(input)
-
-		console.log(this.collection)
-	},
-
 	validate: function(attributes) {
 		if (attributes.sprinkles === false) {
 			return "This does not have sprinkles!"
@@ -71,13 +58,16 @@ var updateAll = function(collection) {
 
 	$("#cupcakeList").empty()
 
+	currentCupcake = collection
+	console.log(currentCupcake)
+
 	collection.each(function(cupcake){
 
 	    var cupcakeData = cupcake.toJSON()
 
 	    var $cupCakeDiv = $( template(cupcakeData) )
 
-	    var $randomDiv = 
+	    //var $randomDiv = 
 
 	    $cupCakeDiv.find(".sprinkle-button").on("click", function() {
 	    	cupcake.sprinkles()
@@ -94,10 +84,6 @@ var updateAll = function(collection) {
 
 	    $cupCakeDiv.find(".delete-button").on("click", function() {
 	    	cupcake.destroy()
-	    })
-
-	    $(".submit-button").on("click", function() {
-	    	cupcake.newFlavor()	
 	    })
 
 	    $("#cupcakeList").append($cupCakeDiv)
@@ -135,13 +121,17 @@ var Shop = Backbone.Collection.extend({
 	},
 
 	initialize: function() {
-
+		this.on("add", function(){
+		       this.trigger("added")
+		    })
 	},
 
 	updateView: function() {
 		this.trigger("updated")
 	}
 })
+
+var cupcakeCollection
 
 $(document).on("ready", function(){
 
@@ -156,11 +146,23 @@ $(document).on("ready", function(){
 		updateAll(this)
 	})
 
+	$(".submit-button").on("click", function() {
+		cupcakeShop.create({
+			cake: $("#newCake").val(),
+			icing: $("#newIcing").val(),
+			sprinkles: $("#checkSprinkles").is(":checked")
+		})
+
+	    updateAll(cupcakeShop)	
+	   })
+
 	cupcakeShop.fetch({
 		success: function(collection) {
 			updateAll(collection)
 			singleFlavor(collection)
-		}	
+			//newFlavor(collection)
+			
+	    }
 	
 	})
 })
