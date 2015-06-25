@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Cupcake Flavor Management</title>
-
+    <link rel="stylesheet" type="text/css" href="main.css">
     <script src="libs/underscore.js"></script>
     <script src="libs/jquery.js"></script>
     <script src="libs/handlebars.js"></script>
@@ -11,6 +11,26 @@
   </head>
   <body>
     
+    <div id="cupcake-list"></div>
+
+    <template id="cupcake-template">
+      <div class="cupcake">
+        <div class="frosting">Icing: {{ icing }}</div>
+        <div class="cake">Cake: {{ cake }}</div>
+        <div class="sprinkles">Sprinkles: {{ sprinkles }}</div>
+        <div class="delete-button">DESTROY THIS CUPCAKE FOREVER!!!</div>
+        <div class="edit-button">EDIT THIS CUPCAKE!</div>
+      </div>
+    </template>
+
+    <div id="cupcake-maker">
+      <h1>Create a Cupcake!</h1>
+      <input type="text" placeholder="what kind of icing?" id="icing-maker"></input>
+      <input type="text" placeholder="what kind of cake?" id="cake-maker"></input>
+      <input type="checkbox" id="yes-sprinkles">  Sprinkes?</input>
+      <button id="new-button">Send that Cake!</button>
+    </div>
+
     <script src="cupcakes.js"></script>
 
   </body>

@@ -1,0 +1,36 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.cupcake {
+	margin-bottom: 10px;
+	font-family: Helvetica, sans-serif;
+	font-size: 24px;
+	border-bottom: 2px pink dotted;
+	padding: 8px 20px;
+}
+#cupcake-list {
+	width: 55%;
+	display: inline-block;
+}
+.delete-button {
+	background-color: lightcoral;
+	border: 1px magenta solid;
+	width: 100px;
+	display: inline-block;
+	text-align: center;
+	font-size: 12px;
+}
+#cupcake-maker {
+	display: inline-block;
+	width: 40%;
+	float: right;
+}
+.hidden {
+	display: none;
+}
+.active {
+	display: inline-block;
+}
