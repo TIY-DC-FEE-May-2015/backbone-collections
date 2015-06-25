@@ -29,11 +29,11 @@ var Shop = Backbone.Collection.extend({
 	url: "/cupcakes",
 
 	initialize: function() {
-    /*
+   
     this.on("add", function(){
-      console.log(arguments)
+      createNew();
     })
-    */
+  
   },
 //Show a single flavor
     listOneCupcake: function() {
@@ -42,9 +42,13 @@ var Shop = Backbone.Collection.extend({
      })
     },
 
-  updateView: function() {
+  
+
+
+
+updateView: function() {
     this.trigger("updated")
-  },
+  }
 
  
 })
@@ -72,28 +76,23 @@ var updateView = function(collection) {
 }
 
 
-var createNew = function(collection){
-	// Add another flavor 
-	
-	var template = Handlebars.compile( $("#cupcake-box").html() )
-	
-	var newCupcake = new Cupcake ([
-	  	{icing: $("#icing").val(),
-	    cake: $("#cake").val(),
-	    sprinkles: $("#sprinkles").val()
-		   }
-	  	])  
-	collection.push(function(cupcake){ 
-	 var cupcakeData = collection.toJSON()
-	 var $div = $( template(cupcakeData) 
 
-	
-	$div.(".create-button").on("click", function(){
-	 	
-	})
-	  
-	  $("#big-box").append($div)
-	})
+var createNew = function(collection){
+
+
+	// Add another flavor 
+		
+
+		$(".create-button").on("click", function(){	
+			var newCupcake = new Cupcake(
+		  	{icing: $("#icing").val(),
+		    cake: $("#cake").val(),
+		    sprinkles: $("#sprinkles").val()
+			   }
+		  	) 
+		  	 collection.create(newCupcake)
+			
+		})
 
 
 }
@@ -102,16 +101,17 @@ var createNew = function(collection){
 
 $(document).on("ready", function(){
 	var cupShop = new Shop()
-
+	var cup = new Cupcake()
 	cupShop.on("updated", function(){
     	updateView(this)
     })
 
 
-	cupShop.on("add", function(){
-    	createNew(this)
-
-    })
+	cup.on("add", function(){
+		createNew(this)
+	})
+	
+   
 
     cupShop.on("remove", function(){
     	updateView(this)
