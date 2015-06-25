@@ -1,0 +1,22 @@
+.cupcake{ 
+	margin-bottom:30px;
+	color:aqua;
+	background-color: green;
+	width:10%;
+	font-weight:bold;
+}
+
+.cupcake-buttons{
+	width:200px;
+	display: inline-block;
+	vertical-align: top;
+	float:right;
+	border:solid 1px black;
+	margin-bottom:10px;
+
+}
+.checkbox{
+	display: inline-block;
+	vertical-align: top;	
+
+}

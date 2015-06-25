@@ -2,16 +2,55 @@
 <html>
   <head>
     <title>Cupcake Flavor Management</title>
+    <link href="cupcake.css" rel="stylesheet" />
+    </head>
+
+    <body>
+
+   <div class = "cupcake-buttons">
+
+        <form>
+          Icing: <br>
+          <input type = "type" name = "icingname" id = "input">
+          <br>
+          Cake: <br>
+          <input type = "type" name = "cakename" id = "input">
+          </form>
+          <br>
+         <div class "checkbox">Sprinkles?</div>
+          <input type = "radio" name = "sprinkles" value = "yes" check> Yes
+          <br> 
+          <input type = "radio" name = "sprinkles" value = "no" check> No    
+         <br>
+              <button class = "add-cupcake"> Add cupcake</button> 
+         
+      </div>
+       
+      <div id = "cupcake-list"></div>
+      <div id = "cupcake-selector"></div>
+
+
+        <template id = "cupcake-template">
+          <div class = "cupcake">
+            <div class = "cupcake-data">
+              <div class = "icing"> Icing {{ icing }}</div>
+              <div class = "cake"> Cake {{ cake }}</div>
+              <div class = "sprinkles"> Sprinkles {{ sprinkles }}</div>
+            </div>
+            <button class = "delete-cupcake"> Delete cupcake</button>
+          </div>
+        </template>
+
+
+
+
+
 
     <script src="libs/underscore.js"></script>
     <script src="libs/jquery.js"></script>
     <script src="libs/handlebars.js"></script>
     <script src="libs/backbone.js"></script>
 
-  </head>
-  <body>
-    
     <script src="cupcakes.js"></script>
-
-  </body>
+    </body>
 </html>
