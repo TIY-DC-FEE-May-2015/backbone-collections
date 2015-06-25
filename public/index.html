@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cupcake Flavor Management</title>
-
+    <title>Mr. Cupcake Flavor Management</title>
+    <link rel="stylesheet" type="text/css" href="cupcakes.css">
     <script src="libs/underscore.js"></script>
     <script src="libs/jquery.js"></script>
     <script src="libs/handlebars.js"></script>
@@ -10,8 +10,60 @@
 
   </head>
   <body>
+  <div class="column left">
+    <h2>Our Super Awesome 'cakes</h2>
+    <div id="cupcake-menu"></div>    
+  </div>
+
+
+
+  <div class="column right">
+    <h2>Add New Flavor</h2>
+    <div id="flavor-submit">
+      What kind of 'cake?
+      <input type="text" id="cake" placeholder="vanilla, red velvet, etc.">
+      <br>What kind of icing?
+      <input type="text" id="icing" placeholder="chocolate, cream cheese, etc.">
+      <br>Sprinkles?
+      <select name="sprinkles" id="new-sprinkles">
+        <option value="false">No</option>       
+        <option value="true">Yes</option>
+      </select>
+      <div class="new-submit" data-type="new">Submit Your New Cupcake</div>
+    </div>
+  <div>
+
+
+
+    <template id="cupcake-template">
+      <div class="cupcake active">
+        <div class="close hidden" data-type="hidden">X</div><div class="cupcake-info" data-tag="{{id}}">
+        {{cake}} cupcake with {{icing}} icing{{#if sprinkles}} and sprinkles{{/if}}.
+        </div>
+       
+        <div class="edit-box hidden" data-type="hidden">
+          
+          <div class="edit ">
+            <h3>Edit this cupcake</h3>
+            What kind of cake?
+            <input type="text" id="cake" placeholder="vanilla, red velvet, etc.">
+            <br>What kind of icing?
+            <input type="text" id="icing" placeholder="chocolate, cream cheese, etc.">
+            <br>Sprinkles?
+            <select name="sprinkles" id="edit-sprinkles">
+              <option value="false">No</option>       
+              <option value="true">Yes</option>
+            </select>
+            <div class="submit">Submit Your New Cupcake</div>
+          </div>
+          <div class="delete ">Delete this cupcake?</div>
+        </div>
+      </div>
+    </template>
+
+
     
-    <script src="cupcakes.js"></script>
+    <script src="cupcakes-1.js"></script>
 
   </body>
 </html>
