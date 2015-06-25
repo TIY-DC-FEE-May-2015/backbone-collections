@@ -1,3 +1,5 @@
+var MrCupcake
+
 var updateDisplay = function(collection){
 	var template = Handlebars.compile($("#cupcake-template").html())
 	$("#cupcake-menu").text("")
@@ -32,8 +34,12 @@ var updateDisplay = function(collection){
 			})
 
 			$cupcake.find(".delete").on("click", function(){
-				flavor.removeFlavor()
-				updateDisplay(collection)
+				var confirmDel = confirm("Really delete this cupcake forever and always?")
+				if (confirmDel === true) {
+					flavor.removeFlavor()
+					updateDisplay(collection)
+				}
+				return
 			})
 
 		}
@@ -55,6 +61,7 @@ var Cupcake = Backbone.Model.extend({
 		sprinkles: false,
 	},
 
+//maybe these save commands can be inside the success function - scoped to collection
 	initialize: function(){
 		this.on("change", function(){
 			this.save()
@@ -108,18 +115,21 @@ var Shop = Backbone.Collection.extend({
 
 
 $(document).on("ready", function(){
-
-	var MrCupcake = new Shop()
+//this did not exist in chrome b/c it's in doc on ready - the function ends
+	//it is not globally scoped
+	MrCupcake = new Shop()
 
 	MrCupcake.fetch({
 		success: function() {
 			updateDisplay(MrCupcake)
+			MrCupcake.on("updated", function() {
+				updateDisplay(this)
+			})		
 		}
 	})
 
-	MrCupcake.on("updated", function() {
-		updateDisplay(this)
-	})
+//make this a callback function inside the fetch success!
+
 
 //I know this shoudl be in var Shop, to make it more variable
 //but it is late and i need sleep at some point this week,
@@ -127,7 +137,7 @@ $(document).on("ready", function(){
 	$(".new-submit").on("click", function(){
 		var cake = $("#flavor-submit").find("#cake").val()
 		var icing = $("#flavor-submit").find("#icing").val()
-		var sprinkles = ($("#flavor-submit").find("#edit-sprinkles").val())
+		var sprinkles = ($("#flavor-submit").find("#new-sprinkles").val())
 			
 		MrCupcake.create({
 			cake: cake,
