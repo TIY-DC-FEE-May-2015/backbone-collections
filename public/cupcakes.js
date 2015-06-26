@@ -1,3 +1,5 @@
+// Creates Cupcake model
+
 var Cupcake = Backbone.Model.extend({
 
 	defaults: {
@@ -8,10 +10,8 @@ var Cupcake = Backbone.Model.extend({
 
 	},
 
-	url: "/cupcakes",
-
-
-	validate: function(attributes) {
+  validate: function(attributes) {
+    
     if (attributes.icing === "") {
       return "No icing? Seriously?!"
     }
@@ -21,15 +21,11 @@ var Cupcake = Backbone.Model.extend({
     if (attributes.sprinkles !== true || attributes.sprinkles !== false) {
     	return "Sooooo are the sprinkles or not?"
     }
-  },
-
-  initialize: function() {
-    this.on("change", function(){
-      this.collection.updateViews()
-    })
   }
 
 })
+
+// Creates Cupcake collection
 
 var Shop = Backbone.Collection.extend({
 
@@ -37,115 +33,109 @@ var Shop = Backbone.Collection.extend({
 
 	url: "/cupcakes",
 
-	updateViews: function() {
-   	 this.trigger("updated")
-  	},
-
-  editCupcake: function() {
-     this.set({
-      icing: this.get("quantity") + 1  //enter edit info
-    })
-  },
-
-  initialize: function() {
-    
-    this.on("add", function(){
-      this.trigger("added")
-    })
-    
-  }
-
 })
 
+// Globally scoping some variables...
 
-var cupcakeCollection;
+var templates = {};  // templates go in here
 
-
-var updateView = function(collection) {
-  var template = Handlebars.compile( $("#cupcake-template").html() )
-
-  $("#cupcake-list").empty()  
-
-  collection.each(function(cupcake){
-    cupcakeCollection = collection
-    var cupcakeData = cupcake.toJSON()
-    var $div = $( template(cupcakeData) )
+var currentCupcake;  // keeps track of the current cupcake (if there is one)
 
 
-    $div.find(".edit-button").on("click", function(){
+// Our main update/refreshing the UI function
 
-      cupcake.editCupcake()
-      console.log(cupcake)
+var updateCupcakeList = function(collection) {
+
+  // Empty the current info first
+  $("#cupcake-list").empty();
+
+  // Loop through the collection and add some Handlebars magic!
+  collection.each(function(cupcake) {
+    var htmlString = templates.cupcake( cupcake.toJSON() ); // remember to use toJSON !!
+    $cupcake = $(htmlString);
+
+    // Create delete button on each cupcake
+    $cupcake.find(".delete-button").on("click", function() {
+      cupcake.destroy();
+      updateCupcakeList(collection);
     })
 
-    $div.find(".delete-button").on("click", function(){
-      cupcake.destroy()
-      console.log(cupcake)
+    // Create edit button on each cupcake
+    $cupcake.find(".edit-button").on("click", function() {
+      // show the edit mode screen and prefill inputs
+      toggleEditMode();
+
+      $("#edit-icing").val( cupcake.get("icing") );
+      $("#edit-cake").val( cupcake.get("cake") );
+      $("#edit-sprinkles").prop("checked", cupcake.get("sprinkles"));
+
+      // Set the current cupcake
+      currentCupcake = cupcake;
     })
 
-
-    $("#cupcake-list").append($div)
-
-
-
-   $(".cupcake").on("click", function() {
-
-      $(this).addClass("active");
-      $(".cupcake").addClass("hidden");
-      $(".active").removeClass("hidden");
-
-      $(".active").on("click", function(){
-      $(this).removeClass("active");
-      $(".cupcake").removeClass("hidden")
-          })
-      })
-
+    $("#cupcake-list").append($cupcake);
 
   })
-
-  
 
 }
 
-$(document).on("ready", function(){
 
-  var myStore = new Shop()
-  
-  myStore.on("added", function(){
-    updateView(this)
-  })
+// Toggles the view between edit mode and list mode
 
-  myStore.on("updated", function(){
-    updateView(this)
-  })
+var toggleEditMode = function() {
+  $(".container").toggleClass("editing")
+}
 
-  myStore.on("remove", function(){
-    updateView(this)
-  })
+// When the document is ready...
 
-  myStore.fetch({
-    success: updateView
-  })
+$(document).on("ready", function() {
 
 
-})
+  // Create shop and template and populate the list
 
-$("#new-button").on("click", function(){
-  var newIcing = $("#icing-maker").val();
-  var newCake = $("#cake-maker").val();
-  var newSprinkles = false;
-  if ($('#yes-sprinkles').is(':checked')) {
-    newSprinkles = true;
-  }
-  
-  cupcakeCollection.create({
-    icing: newIcing,
-    cake: newCake,
-    sprinkles: newSprinkles
+  var myShop = new Shop();
+
+  templates.cupcake = Handlebars.compile( $("#cupcake-template").html() );
+
+  myShop.fetch({
+    success: function(collection) {
+      updateCupcakeList(collection);
+    }
   });
 
-  $("#icing-maker").val("");
-  $("#cake-maker").val("");
+  $("#cancel-button").on("click", function() {
+    toggleEditMode();
+  })
+
+  $("#save-cupcake").on("click", function(){
+    // Check to see if we are currently editing a donut
+    if (currentCupcake) {
+      currentCupcake.set({
+        icing: $("#edit-icing").val(),
+        cake: $("#edit-cake").val(),
+        sprinkles: $("#edit-sprinkles").is(":checked")
+      })
+
+      currentCupcake.save()
+    }
+    // Otherwise, create a brand new donut
+    else {
+      myShop.create({
+        icing: $("#edit-icing").val(),
+        cake: $("#edit-cake").val(),
+        sprinkles: $("#edit-sprinkles").is(":checked")
+      })
+    }
+
+    toggleEditMode()
+
+    updateCupcakeList(myShop)
+
+  })
+
+  $("#add-cupcake").on("click", function() {
+    toggleEditMode();
+  })
+
 
 })
-
