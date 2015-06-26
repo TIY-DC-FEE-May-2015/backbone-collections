@@ -4,46 +4,67 @@
     <title>Cupcake Flavor Management</title>
     <link href="cupcake.css" rel="stylesheet" />
     </head>
-
     <body>
 
-   <div class = "cupcake-buttons">
 
-        <form>
-          Icing: <br>
-          <input type = "type" name = "icingname" id = "input">
-          <br>
-          Cake: <br>
-          <input type = "type" name = "cakename" id = "input">
-          </form>
-          <br>
-         <div class "checkbox">Sprinkles?</div>
-          <input type = "radio" name = "sprinkles" value = "yes" check> Yes
-          <br> 
-          <input type = "radio" name = "sprinkles" value = "no" check> No    
-         <br>
-              <button class = "add-cupcake"> Add cupcake</button> 
-         
+    <header> 
+    <div class = "pictures"> CUPCAKES!!!</div>
+      <img src="fatkid1.png" class = "picture1">
+      <img src="fatkid2.png" class = "picture2">
+      <img src="fatkid3.png" class = "picture3">
+      <img src="fatkid4.png" class = "picture3">
+
+    </header>
+  <div class="page-container">
+    
+    <div class="edit-cupcake">
+    <div class ="cupcake-title">Don't like what you see?  You can request your custom cupcake
+    <div class="edit-name">
+      
+        Cake: <input type="text" id="cake-name" />
       </div>
+      <div class="edit-name">
+        Icing: <input type="text" id="icing-name" />
+      </div>
+      <div class="edit-sprinkles">
+        Has sprinkles?: <input type="checkbox" id="cupcake-sprinkles" />
+      </div>
+
+      <button id="save-cupcake">Save Cupcake</button>
+    
+    
+      <button id="add-cupcake">Add New cupcake</button> 
+    </div>
+      </div>
+  </div>
        
       <div id = "cupcake-list"></div>
-      <div id = "cupcake-selector"></div>
+      <div id = "cupcake-adding"></div>
+           
+            
+           
+       
+     
 
 
         <template id = "cupcake-template">
           <div class = "cupcake">
             <div class = "cupcake-data">
+            <div class = "cake"> Cake {{ cake }}</div>
               <div class = "icing"> Icing {{ icing }}</div>
-              <div class = "cake"> Cake {{ cake }}</div>
+              
+           
               <div class = "sprinkles"> Sprinkles {{ sprinkles }}</div>
-            </div>
-            <button class = "delete-cupcake"> Delete cupcake</button>
+              
+            <div class="buttons">
+            <button class = "delete-button"> Delete cupcake</button>
+            <button class = "edit-button"> Edit cupcake</button>
+          </div>
           </div>
         </template>
 
-
-
-
+   
+       
 
 
     <script src="libs/underscore.js"></script>

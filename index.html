@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link href="index.css" rel="stylesheet" />
+</head>
+<body>
+
+  <div id="cake-flavor">
+  </div>
+
+  <template id="cake-template">
+    <div class="cake">
+      <div class="cake-data">
+        <div class="icing">Icing {{ Icing }}</div>
+        <div class="cake">Cake: {{ Cake  }}%</div>
+        <div class="frosting">Frosting: {{ Frosting }}</div>
+      </div>
+      <div class="cake-buttons">
+        <button class="delete-button">Delete Flavor</button>
+      </div>
+    </div>
+  </template>
+
+  <script src="libs/underscore.js"></script>
+  <script src="libs/jquery.js"></script>
+  <script src="libs/handlebars.js"></script>
+  <script src="libs/backbone.js"></script>
+
+  <script src= "apps.js"></script>
+  <script src="index.js"></script>
+
+</body>
+</html>

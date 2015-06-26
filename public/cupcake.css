@@ -1,11 +1,45 @@
-.cupcake{ 
-	margin-bottom:30px;
-	color:aqua;
-	background-color: green;
-	width:10%;
-	font-weight:bold;
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box
+
 }
 
+.cupcake{ 
+	margin-top:30px;
+	color:aqua;
+	background-color:blue;
+	width:25%;
+	border:solid 1px yellow;
+}
+
+header{
+	font-size:50px;
+	text-align: center;
+	height:50%;
+	background-color:orange;
+
+}
+.pictures{
+	color:RGB(0, 255, 255);
+}
+
+.picture1{
+	height:30vh;
+	margin-right:20px;
+}
+.picture2{
+	height:30vh;
+	margin-right:20px;
+}
+.picture3{
+	height:30vh;
+	margin-right:20px;
+}
+.picture4{
+	height:30vh;
+	margin-right:20px;
+}
 .cupcake-buttons{
 	width:200px;
 	display: inline-block;
@@ -19,4 +53,40 @@
 	display: inline-block;
 	vertical-align: top;	
 
+}
+.cupcake{
+	display:inline-block;
+}
+
+.page-container{
+	float:right;
+	margin-right:10px;
+}
+
+body{
+	background-image:url("sprinkles.png");
+}
+.edit-name{
+	color:aqua;
+}
+.edit-sprinkles{
+	color:aqua;
+}
+button{
+	border:solid 1px black;
+	height:10%;
+	border-radius:10%;
+}
+#add-cupcake{
+	display: inline-block;
+}
+.delete-button{
+	float:right;
+	vertical-align: top
+}
+.cupcake-title{
+	background-color:orange;
+	width:50%;
+	position:right;
+	float:right;
 }
