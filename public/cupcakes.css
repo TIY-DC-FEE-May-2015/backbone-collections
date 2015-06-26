@@ -4,10 +4,73 @@
 	box-sizing: border-box;
 }
 
+body {
+	background-color: RGB(222, 214, 218);
+}
+
+h2 {
+	font-family: Palatino;
+	padding: 4px;
+}
+
+p {
+	text-align: justify;
+	margin-bottom: 15px;
+}
+
+.header {
+	height: 100px;
+	background-color: RGB(245, 245, 220);
+}
+
+.headline{
+	padding: 20px;
+	font-size: 40px;
+	font-family: Garamond;
+	margin-right: 125px;
+	float: right;
+}
+
+.container {
+	background-color: RGB(221, 229, 205);
+	width: 1000px;
+	margin: 0 auto;
+	padding-bottom: 40px;
+}
+
+
 .column {
 	display: inline-block;
 	margin: 0 5px;
 	vertical-align: top;
+	height: 100vh;
+}
+
+.left {
+	width: 29%;
+	border-right: 3px double RGB(106, 83, 118);
+}
+
+.right {
+	width: 68%;
+}
+
+.sidebar-content {
+	padding-top: 25px;
+	margin: 10px;
+}
+
+#flavor-submit {
+	background-color: beige;
+	margin-top: 10px;
+	padding: 5px;
+	border-bottom: 2px solid RGB(106, 83, 118);
+	position: fixed;
+	width: 265px;
+}
+
+#cupcake-menu {
+	padding-top: 50px;
 }
 
 .cupcake.active {
@@ -15,6 +78,11 @@
 	font-size: 15px;
 	transition: height .5s;
 	height: 30px;
+	border-bottom: solid 1px gray;
+	background-color: beige;
+	padding: 15px;
+	padding-bottom: 25px;
+	transition: height .5s;
 }
 
 .cupcake {
@@ -53,11 +121,10 @@
 }
 
 .submit, .new-submit {
-	background-color: darkgray;
+	background-color: RGB(106, 83, 118);
 	padding: 3px;
 	color: white;
 	font-weight: bold;
-	
 }
 
 .delete {
@@ -65,6 +132,8 @@
 	padding: 5px;
 	background-color: black;
 	color: red;
-	width: 60px;
+	width: 70px;
 	float: right;
+	font-family: monospace;
+	text-align: justify;
 }

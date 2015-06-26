@@ -1,3 +1,12 @@
+//fill out the default fields
+//kick back empty fields
+
+//could be putting those buttons all in doc on ready - one place
+	//hint: use a global var for the current cupcake, accessible universally
+	//note: maybe not tho, since it's not ONE button, it's a button for each cake
+
+//for my radio buttons - sprinkles: $("#sprinkles").is(":checked")
+
 var MrCupcake
 
 var updateDisplay = function(collection){
@@ -21,16 +30,22 @@ var updateDisplay = function(collection){
 				$(".cupcake").addClass("active")
 			})
 
+			$cupcake.find("#cake").val(flavor.get("cake"))
+			$cupcake.find("#icing").val(flavor.get("icing"))
+			$cupcake.find("#edit-sprinkles").prop("checked", flavor.get("sprinkles"))
+
+
 			$cupcake.find(".submit").on("click", function(){	
 				var cake = $cupcake.find("#cake").val()
 				var icing = $cupcake.find("#icing").val()
-				var sprinkles = ($cupcake.find("#edit-sprinkles").val())
-					
+				var sprinkles = $cupcake.find("#edit-sprinkles").is(":checked")
+
 				flavor.set({
 					cake: cake,
 					icing: icing,
 					sprinkles: sprinkles,
-				})
+				})				
+
 			})
 
 			$cupcake.find(".delete").on("click", function(){
@@ -44,7 +59,6 @@ var updateDisplay = function(collection){
 
 		}
 		$this.find(".cupcake-info").on("click", clickHandler)
-
 		$("#cupcake-menu").append($this)
 	})
 }
@@ -128,22 +142,30 @@ $(document).on("ready", function(){
 		}
 	})
 
-//make this a callback function inside the fetch success!
 
 
-//I know this shoudl be in var Shop, to make it more variable
-//but it is late and i need sleep at some point this week,
-//so I will fix it later!
+
+//could use a lot of the same stuff, set up an if statement in the edit/save fn
+	//to clarify if there is an edit or create happening - to keep it DRY
 	$(".new-submit").on("click", function(){
 		var cake = $("#flavor-submit").find("#cake").val()
 		var icing = $("#flavor-submit").find("#icing").val()
-		var sprinkles = ($("#flavor-submit").find("#new-sprinkles").val())
-			
+		var sprinkles = $("#new-sprinkles").is(":checked")
+		
+		if (cake === "" || icing === "") {
+			alert("Wait! Empty Fields!")
+			return
+		}
+
 		MrCupcake.create({
 			cake: cake,
 			icing: icing,
 			sprinkles: sprinkles,
 		})
+
+		$("#flavor-submit").find("#cake").val("")
+		$("#flavor-submit").find("#icing").val("")
+
 	})
 
 
