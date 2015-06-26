@@ -24,6 +24,15 @@
         </div>
       </div>
 
+      <div class="right">
+        <div class="random-container">
+
+          <div class="random-title">Featured Flavor</div>
+
+          <div id="randomCupcake">
+            <!-- Insert Template -->
+          </div>
+        </div>
 
         <div id="edit-list">
 
@@ -43,16 +52,6 @@
           <button class="submit-button">submit</button>
 
         </div>
-      
-
-      <div class="random-container">
-
-        <div class="random-title">Featured Flavor</div>
-
-        <div id="randomCupcake">
-          <!-- Insert Template -->
-        </div>
-
 
       </div>
 
@@ -61,33 +60,34 @@
 
 <!-- Template Start -->
     <template id="cupcakeTemplate">
+      <div class="cupcakeBox">
+        <div class="stats">
 
-      <div class="stats">
+          <div class="cake">Cake:  {{ cake }}</div>
 
-        <div class="cake">Cake Flavor: {{ cake }}</div>
+          <div class="icing">Icing:  {{ icing }}</div>
 
-        <div class="icing">Icing Flavor:{{ icing }}</div>
+          {{#if sprinkles}}
+          <div class="sprinkles">YES SPRINKLES!</div>
+          {{ else }}
+          <div class="sprinkles">sprinkles. yuck.</div>
+          {{/if}}
+          <div class="quantity">Qty:  {{ quantity }}</div>
 
-        {{#if sprinkles}}
-        <div class="sprinkles">YES SPRINKLES!</div>
-        {{ else }}
-        <div class="sprinkles">sprinkles. yuck.</div>
-        {{/if}}
-        <div class="quantity">Qty: {{ quantity }}</div>
+        </div>
 
-      </div>
+        <div class="buttons">
+    
+          <button class="increase-button">plus one</button>
 
-      <div class="buttons">
-  
-        <button class="increase-button">plus one</button>
+          <button class="decrease-button">minus one</button>
 
-        <button class="decrease-button">minus one</button>
+           <button class="sprinkle-button">sprinkles?</button>
 
-         <button class="sprinkle-button">sprinkles?</button>
+          <button class="delete-button">delete</button>
+        </div>
 
-        <button class="delete-button">delete cupcake</button>
-      </div>
-
+      </div>  
     </template>
     
     <script src="cupcakes.js"></script>

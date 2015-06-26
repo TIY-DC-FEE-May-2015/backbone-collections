@@ -97,7 +97,7 @@ var singleFlavor = function(collection) {
 
 	var num = Math.floor(Math.random() * collection.length)
 
-	var singleCID = collection.get(num)
+	var singleCID = collection.at(num)
 	
 	var singleData = singleCID.toJSON()
 
@@ -153,7 +153,10 @@ $(document).on("ready", function(){
 			sprinkles: $("#checkSprinkles").is(":checked")
 		})
 
-	    updateAll(cupcakeShop)	
+	    updateAll(cupcakeShop)
+	    $("#newCake").val("")
+	    $("#newIcing").val("")	
+	    $("#checkSprinkles").prop("checked", false)
 	   })
 
 	cupcakeShop.fetch({
