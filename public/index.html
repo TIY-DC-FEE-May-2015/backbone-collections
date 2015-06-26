@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cupcake Flavor Management</title>
-
+    <title>Mr. Cupcake Flavor Management</title>
+    <link rel="stylesheet" type="text/css" href="cupcakes.css">
     <script src="libs/underscore.js"></script>
     <script src="libs/jquery.js"></script>
     <script src="libs/handlebars.js"></script>
@@ -10,8 +10,64 @@
 
   </head>
   <body>
+  
+  <div class="header">
+    <div class="headline">Herr Cupcake's Cupcakes</div>   
+  </div>
+
+  <div class="container">
+
+    <div class="column left">      
+      <div class="sidebar-content">
+      <h2> Dynamic Cupcake Solutions</h2>
+      <p>Here please find a convenient way to review your cupcake inventory options. Edit or remove a cupcake flavor by clicking on it to open the edit window.</p>
+      <p> If you wish to add a new variety of cupcake to your menu, utilize the handy Cupcake Creator below.</p>
+        <div id="flavor-submit">
+          <h2>Cupcake Creator</h2>
+          What kind of 'cake?<br>
+          <input type="text" id="cake" placeholder="vanilla, red velvet, etc.">
+          <br>What kind of icing?<br>
+          <input type="text" id="icing" placeholder="chocolate, cream cheese, etc.">
+          <br>Sprinkles?
+            <input type="checkbox" id="new-sprinkles">
+          <div class="new-submit" data-type="new">Submit Your New Cupcake</div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="column right">
+      <div id="cupcake-menu"></div>    
+    <div>
+  </div>
+
+    <template id="cupcake-template">
+      <div class="cupcake active">
+        <div class="close hidden" data-type="hidden">X</div><div class="cupcake-info" data-tag="{{id}}">
+        {{cake}} cupcake with {{icing}} icing{{#if sprinkles}} and sprinkles.{{else}}.{{/if}}
+        </div>
+       
+        <div class="edit-box hidden" data-type="hidden">
+          
+          <div class="edit ">
+            <h3>Edit this cupcake</h3>
+            What kind of cake?
+            <input type="text" id="cake" placeholder="vanilla, red velvet, etc.">
+            <br>What kind of icing?
+            <input type="text" id="icing" placeholder="chocolate, cream cheese, etc.">
+            <br>Sprinkles?
+              <input type="checkbox" id="edit-sprinkles">
+            <div class="submit">Submit Your Altered Cupcake</div>
+          </div>
+          <div class="delete ">Delete this cupcake?</div>
+        </div>
+      </div>
+    </template>
+
+
     
-    <script src="cupcakes.js"></script>
+    <script src="cupcakes-1.js"></script>
 
   </body>
 </html>
