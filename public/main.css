@@ -1,0 +1,90 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	color: #eee;
+	background-color: #444;
+	background-image: url("http://previews.123rf.com/images/balefire9/balefire91008/balefire9100800017/7566021-A-distressed-wooden-surface-texture-seamlessly-tileable-Boards-are-running-vertically--Stock-Photo.jpg");
+}
+
+h1, h2, h3 {
+	font-family: 'Fredericka the Great', cursive;
+}
+
+h1 {
+	font-size: 4em;
+}
+
+h2 {
+	font-size: 2.8em;
+}
+
+h3 {
+	font-size: 1.9em;
+}
+
+.header {
+	width: 80%;
+	padding: 15px 0;
+	text-align: center;
+	margin: 10px auto;
+}
+
+.cupcake {
+	margin-bottom: 10px;
+	font-family: Helvetica, sans-serif;
+	font-size: 20px;
+	border-bottom: 2px pink dotted;
+	padding: 8px 0px 8px 10px;
+	display: inline-block;
+	float: left;
+}
+
+.delete-button,
+.edit-button {
+	background-color: lightcoral;
+	border: 1px magenta solid;
+	width: 100px;
+	display: inline-block;
+	text-align: center;
+	font-size: 12px;
+}
+#cupcake-maker {
+	display: inline-block;
+	width: 40%;
+	float: right;
+}
+
+.container .edit-cupcake {
+	display: none;
+}
+
+#cupcake-list-container{
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.container #cupcake-list-container {
+	width: 64%;
+	display: inline-block;
+	padding-left: 25px; 
+}
+
+.container #cupcake-maker {
+	width: 33%;
+	display: inline-block;
+}
+
+.container.editing .edit-cupcake {
+	width: 55%;
+	display: inline-block;
+	margin: 0px auto;
+}
+
+.container.editing #cupcake-list-container,
+.container.editing #cupcake-maker {
+	display: none;
+}

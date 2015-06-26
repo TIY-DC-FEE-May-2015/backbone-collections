@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>Cupcake Flavor Management</title>
-
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link href='http://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
     <script src="libs/underscore.js"></script>
     <script src="libs/jquery.js"></script>
     <script src="libs/handlebars.js"></script>
@@ -10,7 +11,51 @@
 
   </head>
   <body>
-    
+
+  <div class="header">
+    <h1>Amanda's Cupcakery</h1>
+  </div>
+
+    <div class="container">
+      <div class="edit-cupcake">
+        <div class="edit-icing">
+          Icing: <input type="text" id="edit-icing" />
+        </div>
+         <div class="edit-cake">
+          Cake: <input type="text" id="edit-cake" />
+        </div>
+        <div class="edit-sprinkles">
+          Sprinkles?: <input type="checkbox" id="edit-sprinkles" />
+        </div>
+
+        <button id="save-cupcake">Save Cupcake</button>
+        <button id="cancel-button">Cancel</button>
+    </div>
+
+    <div id="cupcake-list-container">
+      <h2>Flavors</h2>
+      <div id="cupcake-list">
+      </div>
+    </div>
+
+    <div id="cupcake-maker">
+      <h2>Create a Cupcake!</h2>
+      <h3>Don't see one you like?</h3>
+      <div id="add-cupcake">Make your own!</div>
+    </div>
+
+  </div>
+
+    <template id="cupcake-template">
+      <div class="cupcake">
+        <div class="icing">Icing: {{ icing }}</div>
+        <div class="cake">Cake: {{ cake }}</div>
+        <div class="sprinkles">Sprinkles: {{ sprinkles }}</div>
+        <div class="delete-button">DESTROY THIS CUPCAKE FOREVER!!!</div>
+        <div class="edit-button">EDIT THIS CUPCAKE!</div>
+      </div>
+    </template> 
+
     <script src="cupcakes.js"></script>
 
   </body>
