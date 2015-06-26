@@ -4,22 +4,237 @@
 	box-sizing: border-box;
 }
 
-.container {
-	padding: 10px 20px;
-	border-bottom: 1px solid pink;
+.header {
+	height: 21vh;
+	font-size: 105px;
+	font-family: 'Lobster', cursive;
+	text-align: left;
+	background-color: black;
+	color: white;
+	padding-left: 20px;
+	
+}
+
+.create-button {
+	font-size: 18px;
+	font-family: Avenir;
+	color: white;
+	text-align: top;
+	position: absolute;
+	top: 50px;
+	right: 20px;
+	height:30px;
+	width: 125px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: black;
+	border-radius: 5px;
+	border-color: white;
+	border: white 2px solid;
+
+
+}
+
+.add-editbox{
+	position: absolute;
+	height: 175px;
 	width: 300px;
+	top: 115px;
+	right: 0px;
+	font-family: Avenir;
+	border: solid 3px black;
+	border-top: none;
+	border-radius: 5px;
+	padding: 35px 15px 20px 10px;
+	background-color: white;
+	z-index: 1;
+}
+
+.hidden{
+	display: none;
+}
+
+#cancel-button {
+	position: absolute;
+	top: 5px;
+	right: 7px;
+	font-size: 18px;
+	border: none;
+	background-color: white;
+}
+
+#save-donut {
+	font-family: Avenir;
+	font-size: 14px;
+	color: white;
+	position: absolute;
+	right: 120px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 5px;
+	border: black 1px solid;
+	background-color: black;
+}
+
+.edit-button, .delete-button{
+	display: inline-block;
+	font-size: 14px;
+	font-family: Avenir;
+	color: white;
+	padding-left: 20px;
+	padding-right: 20px;
+	border: 2px solid black;
+	border-radius: 5px;
+	background-color: black;
+	background-color: black;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	position: relative;
+	left: 80px;
+	
+}
+
+.up{
+	height: 15px;
+	width: 15px;
+	vertical-align: center;
+}
+
+.down{
+	height: 15px;
+	width: 15px;
+	transform: rotate(180deg);
+}
+.container {
+	margin: 20px 40px;
+	padding: 20px 5px;
+	font-family: Avenir;
+	border: 4px solid pink;
+	border-radius: 10px;
+	width: 27%;
+	display: inline-block;
 } 
+
+.container p {
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+}
 
 h2 , .create-button {
 	margin-left: 20px ;
 }
 
-textarea {
+.cupcake-list {
+	text-align: center;
+}
 
-	height: 20px;
-	width: 150px;
+.image{
+	position: relative;
+	left: 90px;
+	z-index: 0;
 }
 
 .text {
 	padding-left: 20px;
 }
+
+/*Footer*/
+.footer {
+	height: 15vh;
+	background-color: black;
+}
+
+.logo {
+	text-align: center;
+	font-family: Avenir;
+	font-size: 18px;
+	color: white;
+	padding-top: 35px;
+
+}
+/* URL */ 
+.top-hat.image{
+	background-image: url("assets/swirl.png");
+	height: 150px;
+	width: 150px;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.white-on.image{
+	background-image: url("assets/white-on.png");
+	height: 150px;
+	width: 150px;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.oreo-cup.image{
+	background-image: url("assets/oreo.png");
+	height: 150px;
+	width: 150px;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.choco-2.image{
+	background-image: url("assets/choco-2.png");
+	height: 150px;
+	width: 150px;
+	background-size: contain;
+	background-repeat: no-repeat;
+
+}
+
+.cup-cookie.image{
+	background-image: url("assets/cookiedough.png");
+	height: 150px;
+	width: 150px;
+	background-size: contain;
+	background-repeat: no-repeat;
+
+}
+
+.red-tie.image{
+	background-image: url("assets/redvelvet.png");
+	height: 150px;
+	width: 150px;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.strawberry{
+	background-image: url("assets/strawberry.png");
+	height: 150px;
+	width: 150px;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+/* Default Cupcake image */
+
+.cup-cake {
+	background-image: url("assets/cupcake.png");
+	height: 150px;
+	width: 150px;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

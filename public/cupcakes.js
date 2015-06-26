@@ -2,9 +2,13 @@ var Cupcake = Backbone.Model.extend({
 	
 //all cupcake flavors has frosting, sprinkles, cake . sprinkles is true or false. 
 	defaults: {
+		title: "Unknown",
 		icing:"Unkown" , 
 		sprinkles: false, 
-		cake: "Unkown"
+		cake: "Unkown",
+		qty: 1,
+		url: "cup-cake"
+
 	}, 
 
 //access server with cupcake data 
@@ -18,7 +22,16 @@ var Cupcake = Backbone.Model.extend({
 		if (attrs.icing === "" || attrs.cake === ""){
 			return "We do not sell these"
 		}
-	}
+		if (attrs.qty < 0){
+			return "We cannot owe cupcakes!"
+		}
+	},
+//sets a listener
+	initialize: function() {
+    this.on("change", function(){
+      this.collection.updateView()
+    })
+  }
 
 })
 
@@ -31,87 +44,88 @@ var Shop = Backbone.Collection.extend({
 	initialize: function() {
    
     this.on("add", function(){
-      createNew();
+       this.trigger("added")
     })
   
+  },
+
+  updateView: function() {
+    this.trigger("updated")
   },
 //Show a single flavor
     listOneCupcake: function() {
      this.filter(function(cupcake){	
         return cupcake.get("name") 
      })
-    },
-
-  
-
-
-
-updateView: function() {
-    this.trigger("updated")
-  }
+    }
 
  
 })
+
+var templates = {}
+var thatCupcake;
 
 var updateView = function(collection) {
 
  $("#big-box").empty()
 
  //Show all flavors & show them 
- var template = Handlebars.compile( $("#cupcake-box").html() )
 		
  collection.each(function(cupcake){
-	var cupcakeData = cupcake.toJSON()
-	var $div = $( template(cupcakeData) )
+ 
+	var htmlString = templates.cupcake( cupcake.toJSON() )
+	var $div = $( htmlString )
 
 //Delete an existing flavor
  $div.find(".delete-button").on("click", function(){
       cupcake.destroy()
+      //updatView(collection)
       console.log(cupcake)
     })
 
+//Edit an existing flavor
+ $div.find(".edit-button").on("click", function(){
+ 		$(".add-editbox").removeClass("hidden")
+ 		thatCupcake = cupcake
+ 		$("#title").val(cupcake.get("title") )
+		$("#cake").val(cupcake.get("cake") )
+		$("#icing").val(cupcake.get("icing") )
+		$("#sprinkles").prop("checked", cupcake.get("sprinkles"))
+ 	})
+
+ $div.find(".up").on("click", function(){
+ 		cupcake.set({
+ 			qty: ( cupcake.get("qty") )+1
+ 		})	
+ 	})
+
+ $div.find(".down").on("click", function(){
+ 		cupcake.set({
+ 			qty: ( cupcake.get("qty") ) - 1
+ 		})	
+ 	})
 
 	 $("#big-box").append($div)
-  })
+ })
 }
-
-
-
-var createNew = function(collection){
 
 
 	// Add another flavor 
-		
-
-		$(".create-button").on("click", function(){	
-			var newCupcake = new Cupcake(
-		  	{icing: $("#icing").val(),
-		    cake: $("#cake").val(),
-		    sprinkles: $("#sprinkles").val()
-			   }
-		  	) 
-		  	 collection.create(newCupcake)
-			
-		})
-
-
-}
- 
-
 
 $(document).on("ready", function(){
+
 	var cupShop = new Shop()
-	var cup = new Cupcake()
+	templates.cupcake = Handlebars.compile( $("#cupcake-box").html() )
+	//var cup = new Cupcake()
 	cupShop.on("updated", function(){
     	updateView(this)
     })
 
 
-	cup.on("add", function(){
-		createNew(this)
-	})
+	 cupShop.on("added", function(){
+    	updateView(this)
+  	})
 	
-   
 
     cupShop.on("remove", function(){
     	updateView(this)
@@ -121,7 +135,38 @@ $(document).on("ready", function(){
 		success: updateView
 	})
 
+	$(".create-button").on("click", function(){
+		$(".add-editbox").removeClass("hidden")
+	})
 
-//Edit an existing flavor
+	$("#cancel-button").on("click", function(){
+		$(".add-editbox").addClass("hidden")
+		$("#title").val("")
+		$("#cake").val("")
+		$("#icing").val("")
+	})
+
+	// Bind a listener to the save donut button
+  $("#save-donut").on("click", function(){
+  	console.log(thatCupcake)
+  	
+    // Check to see if we are currently editing a donut
+    if (thatCupcake) {
+      thatCupcake.set({
+        title: $("#title").val(),	
+	  	icing: $("#icing").val(),
+	    cake: $("#cake").val(),
+	    sprinkles: $("#sprinkles").is(":checked")
+      })
+      thatCupcake.save()
+    } else{
+     	cupShop.create({
+		  	title: $("#title").val(),	
+		  	icing: $("#icing").val(),
+		    cake: $("#cake").val(),
+		    sprinkles: $("#sprinkles").is(":checked")
+		}) 
+    }
+    })
 
 })

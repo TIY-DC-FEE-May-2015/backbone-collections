@@ -48,13 +48,13 @@ exports = module.exports = {
   },
 
   init: function() {
-    createItem({ icing: "Chocolate", cake: "Vanilla", sprinkles: false })
-    createItem({ icing: "Vanilla", cake: "Vanilla", sprinkles: true })
-    createItem({ icing: "Vanilla", cake: "Chocolate", sprinkles: true })
-    createItem({ icing: "Chocolate", cake: "Chocolate", sprinkles: false })
-    createItem({ icing: "Vanilla", cake: "Cookie Dough", sprinkles: false })
-    createItem({ icing: "Vanilla", cake: "Red Velvet", sprinkles: false, disgusting: "you bet" })
-    createItem({ icing: "Strawberry", cake: "Vanilla", sprinkles: true })
+    createItem({ title: "Top Hat" , icing: "Chocolate", cake: "Vanilla", sprinkles: false, qty: 1, url:"top-hat" })
+    createItem({ title: "White on White", icing: "Vanilla", cake: "Vanilla", sprinkles: true, qty: 1, url:"white-on" })
+    createItem({ title: "Oreo Cup", icing: "Vanilla", cake: "Chocolate", sprinkles: true, qty: 1, url:"oreo-cup"  })
+    createItem({ title: "Chocolate Squared", icing: "Chocolate", cake: "Chocolate", sprinkles: false, qty: 1, url:"choco-2"  })
+    createItem({ title:"Cup & Cookie" , icing: "Vanilla", cake: "Cookie Dough", sprinkles: false, qty: 1, url:"cup-cookie" })
+    createItem({ title:"Red Tie" , icing: "Vanilla", cake: "Red Velvet", sprinkles: false, qty: 1, url:"red-tie" })
+    createItem({ title:"Strawberry & Cream" , icing: "Strawberry", cake: "Vanilla", sprinkles: true, qty: 1, url:"strawberry" })
   }
 
 }
