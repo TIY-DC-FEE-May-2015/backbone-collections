@@ -1,0 +1,152 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.header-container {
+	width: 100%;
+	background: rgb(223, 111, 172);
+	color: rgb(248, 202, 227);
+	font-size: 48px;
+	padding: 30px;
+	text-align: center;
+}
+
+.cupcake-container {
+	font-family: Helvetica;
+	font-size: 18px;
+	position: relative;
+	/*background: rgb(173, 102, 198);*/
+	color: rgb(231, 244, 250);
+	background-image: url("sprinkleBG.png");
+	background-repeat: none;
+	background-size: cover;
+}
+
+.list-container {
+	display: inline-block;
+	margin: 5px 20px;
+}
+
+.listHeader {
+	font-size: 32px;
+	text-align: center;
+	padding: 10px;
+	color: rgb(122, 41, 150);
+}
+
+.stats {
+	padding: 5px 0px;
+	line-height: 22px;
+}
+
+#cupcakeList {
+	display: inline-block;
+	padding: 10px;
+	width: 350px;
+}
+
+.cupcakeBox {
+	background: rgba(173, 102, 198, .8);
+	padding: 15px;
+	margin-bottom: 5px;
+	border-radius: 10px;
+}
+
+.buttons {
+	padding-top: 15px;
+	border-bottom: 1px solid rgb(253, 163, 170);
+	position: relative;
+}
+
+.buttons:last-of-type {
+	border-bottom: none;
+}
+
+button {
+	padding: 5px;
+	background: rgb(122, 41, 150);
+	color: rgb(232, 199, 243);
+	border-radius: 5px;
+	border: none;
+	font-size: 14px;
+}
+
+.delete-button {
+	position: absolute;
+	right: 0px;
+	top: 10px;
+	background: rgb(203, 147, 223);
+	margin-top: 5px
+
+}
+
+#edit-list {
+	margin-top: 20px;
+	padding: 40px;
+	width: 300px;
+	display: inline-block;
+	background-color: rgba(249, 91, 103, .8);
+	border-radius: 10px;
+	position: relative;
+}
+
+.edit-list-title {
+	font-size: 24px
+}
+
+.right {
+	display: inline-block;
+	vertical-align: top;
+	width: 300px;
+}
+
+.random-container {
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 73px;
+	padding: 40px;
+	background: rgba(251, 124, 134, .8);	
+	border-radius: 10px;
+	height: 190px;
+	width: 300px;
+}
+
+.random-title {
+	font-size: 28px;
+}
+
+#randomCupcake .cupcakeBox{
+	background: none;
+	padding: 0;
+}
+
+#randomCupcake button {
+	display: none;
+}
+
+#randomCupcake .quantity {
+	display: none;
+}
+
+#randomCupcake .buttons {
+	border: none;
+}
+
+.input {
+	display: block;
+	margin-top: 5px;
+}
+
+input { 
+	font-size: 18px;
+	line-height: 20px;
+}
+
+.submit-button {
+	margin-top: 5px;
+	position: absolute;
+	right: 65px;
+	bottom: 15px;
+}
