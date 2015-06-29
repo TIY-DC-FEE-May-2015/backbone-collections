@@ -1,45 +1,49 @@
 *{
 	margin:0;
 	padding:0;
-	box-sizing:border-box
+	box-sizing:border-box;
+	font-family:Copperplate Gothic Light, sans-serif;;
 
+}
+.cupcake-holder{
+	display: inline-block;
+	width:500px;
 }
 
 .cupcake{ 
 	margin-top:30px;
-	color:aqua;
-	background-color:blue;
-	width:25%;
+	color:white;
+	padding:10px;
+	background-color:orange;
+	width:200px;
 	border:solid 1px yellow;
+	border-radius:10px;
 }
 
 header{
-	font-size:50px;
+	font-size:70px;
 	text-align: center;
-	height:50%;
-	background-color:orange;
-
+	height:32vh;
+	width:100%;
+	margin-right:50px;
+	background-image:url("http://img12.deviantart.net/2ac5/i/2012/062/a/7/cupcake_background_by_wljump-d4rktia.jpg");
+	background-size:contain;
+	background-color:RGB(216, 111, 29);
+	background-repeat: no-repeat;
 }
+
+
 .pictures{
-	color:RGB(0, 255, 255);
+	color:white;
 }
 
 .picture1{
-	height:30vh;
-	margin-right:20px;
+	height:65%;
+	margin-right:30px;
+	margin-bottom:20px;
 }
-.picture2{
-	height:30vh;
-	margin-right:20px;
-}
-.picture3{
-	height:30vh;
-	margin-right:20px;
-}
-.picture4{
-	height:30vh;
-	margin-right:20px;
-}
+	
+
 .cupcake-buttons{
 	width:200px;
 	display: inline-block;
@@ -67,26 +71,46 @@ body{
 	background-image:url("sprinkles.png");
 }
 .edit-name{
-	color:aqua;
+	color:red;
 }
 .edit-sprinkles{
-	color:aqua;
+	color:red;
 }
 button{
 	border:solid 1px black;
-	height:10%;
+	height:5%;
 	border-radius:10%;
-}
-#add-cupcake{
-	display: inline-block;
 }
 .delete-button{
 	float:right;
-	vertical-align: top
+	height:5%;
+	border-radius:10%;
 }
 .cupcake-title{
 	background-color:orange;
-	width:50%;
+	width:85%;
 	position:right;
 	float:right;
+	display: inline-block;
+	margin-top:20px;
+	border-radius:15px;
+	color:red;
+	border:solid 5px yellow;
+}
+
+.edit-cupcake{
+	display: inline-block;
+	width:70%;
+	float:right;
+	margin:10px;
+}
+
+.cupcake-container{
+	color:white;
+	border:solid 2px white;
+}
+#cupcake-count{
+	color:white;
+	display: inline-block;
+	position:relative;
 }

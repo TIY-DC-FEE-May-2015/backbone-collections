@@ -7,9 +7,6 @@ var Cupcake = Backbone.Model.extend({
 
 	},
 
-	/*hasCupcake: function(thatCupcake){
-		var onecupcake = _.find(this.cupcake, function())
-	}*/
 
 
 	validate: function(attributes) {
@@ -18,13 +15,6 @@ var Cupcake = Backbone.Model.extend({
 		}
 
 	}
-
-	/*initialize: function(){
-		this.on("change", function(){
-			this.collection.updateView()
-		})
-	}*/
-
 
 })
 	
@@ -41,13 +31,6 @@ var Shop = Backbone.Collection.extend({
 
 })
 
-/*var Single = Backbone.Collection.extend({
-	url:"cupcakes/flavorId",
-})*/
-
-
-
-	//url:"/cupcakes/:flavorId",
 	
 var cupcakeCurrent
 
@@ -63,11 +46,7 @@ var updateView = function(collection){
 
 		var $div = $( template(cupcakeData))
 
-		  
-			/*$("#add-cupcake").on("click",function(){
-				console.log("hi")
-				//cupcake.()
-			})*/
+
 
 		    $div.find(".delete-button").on("click", function(){
 		    	console.log(cupcake)
@@ -102,9 +81,15 @@ $(document).on("ready", function(){
 
 	var cupcakeShop = new Shop()
 
-	cupcakeShop.on("add", function(){
+
+	/*cupcakeShop.on("add", function(){
 		updateView(this)
-	})
+	})*/
+	cupcakeShop.on("add remove", function(){
+		$("#cupcake-count").text(cupcakeShop.length)
+		})
+
+		
 
 
 	cupcakeShop.fetch({
@@ -132,14 +117,6 @@ $(document).on("ready", function(){
 		updateView(cupcakeShop)
 		clearBox()
 	})
-
-	$("#add-cupcake").on("click", function(){
-		cupcakeCurrent= false
-		$("#icing-name").val(),
-		$("#cake-name").val (),
-		$("#cupcake-sprinkles").prop("checked", false)
-		console.log(cupcakeShop)
-	})
-	updateView(cupcakeShop)
+		
 
 })

@@ -8,17 +8,14 @@
 
 
     <header> 
-    <div class = "pictures"> CUPCAKES!!!</div>
-      <img src="fatkid1.png" class = "picture1">
-      <img src="fatkid2.png" class = "picture2">
-      <img src="fatkid3.png" class = "picture3">
-      <img src="fatkid4.png" class = "picture3">
-
+    <div class = "pictures"> Cupcakes!</div>
+    <img src = "cupcake.png" class = "picture1">
+ 
     </header>
   <div class="page-container">
     
     <div class="edit-cupcake">
-    <div class ="cupcake-title">Don't like what you see?  You can request your custom cupcake
+    <div class ="cupcake-title">Don't like what you see?  You can request your custom cupcake here.
     <div class="edit-name">
       
         Cake: <input type="text" id="cake-name" />
@@ -27,33 +24,33 @@
         Icing: <input type="text" id="icing-name" />
       </div>
       <div class="edit-sprinkles">
-        Has sprinkles?: <input type="checkbox" id="cupcake-sprinkles" />
+        Want Sprinkles?: <input type="checkbox" id="cupcake-sprinkles" />
       </div>
 
-      <button id="save-cupcake">Save Cupcake</button>
-    
-    
-      <button id="add-cupcake">Add New cupcake</button> 
+
+      <button id="save-cupcake">Save/AddCupcake</button>
+          <div class = "cupcake-continer">
+               Amount of cupcakes in your cart <span id = "cupcake-count"> </span>
+        </div>
+
     </div>
       </div>
   </div>
        
-      <div id = "cupcake-list"></div>
+       <div class= "cupcake-holder">
+          <div id = "cupcake-list"></div>
+      </div>
       <div id = "cupcake-adding"></div>
+
            
             
-           
-       
-     
-
 
         <template id = "cupcake-template">
           <div class = "cupcake">
             <div class = "cupcake-data">
-            <div class = "cake"> Cake {{ cake }}</div>
+
+              <div class = "cake"> Cake {{ cake }}</div>
               <div class = "icing"> Icing {{ icing }}</div>
-              
-           
               <div class = "sprinkles"> Sprinkles {{ sprinkles }}</div>
               
             <div class="buttons">
@@ -61,7 +58,10 @@
             <button class = "edit-button"> Edit cupcake</button>
           </div>
           </div>
+          </div>
         </template>
+
+    
 
    
        
