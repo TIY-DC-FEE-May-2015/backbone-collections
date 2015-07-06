@@ -2,16 +2,76 @@
 <html>
   <head>
     <title>Cupcake Flavor Management</title>
+    <link href="cupcake.css" rel="stylesheet" />
+    </head>
+    <body>
+
+
+    <header> 
+    <div class = "pictures"> Cupcakes!</div>
+    <img src = "cupcake.png" class = "picture1">
+ 
+    </header>
+  <div class="page-container">
+    
+    <div class="edit-cupcake">
+    <div class ="cupcake-title">Don't like what you see?  You can request your custom cupcake here.
+    <div class="edit-name">
+      
+        Cake: <input type="text" id="cake-name" />
+      </div>
+      <div class="edit-name">
+        Icing: <input type="text" id="icing-name" />
+      </div>
+      <div class="edit-sprinkles">
+        Want Sprinkles?: <input type="checkbox" id="cupcake-sprinkles" />
+      </div>
+
+
+      <button id="save-cupcake">Save/AddCupcake</button>
+          <div class = "cupcake-continer">
+               Amount of cupcakes in your cart <span id = "cupcake-count"> </span>
+        </div>
+
+    </div>
+      </div>
+  </div>
+       
+       <div class= "cupcake-holder">
+          <div id = "cupcake-list"></div>
+      </div>
+      <div id = "cupcake-adding"></div>
+
+           
+            
+
+        <template id = "cupcake-template">
+          <div class = "cupcake">
+            <div class = "cupcake-data">
+
+              <div class = "cake"> Cake {{ cake }}</div>
+              <div class = "icing"> Icing {{ icing }}</div>
+              <div class = "sprinkles"> Sprinkles {{ sprinkles }}</div>
+              
+            <div class="buttons">
+            <button class = "delete-button"> Delete cupcake</button>
+            <button class = "edit-button"> Edit cupcake</button>
+          </div>
+          </div>
+          </div>
+        </template>
+
+    
+
+   
+       
+
 
     <script src="libs/underscore.js"></script>
     <script src="libs/jquery.js"></script>
     <script src="libs/handlebars.js"></script>
     <script src="libs/backbone.js"></script>
 
-  </head>
-  <body>
-    
     <script src="cupcakes.js"></script>
-
-  </body>
+    </body>
 </html>
