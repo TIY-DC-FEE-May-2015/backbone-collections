@@ -2,15 +2,68 @@
 <html>
   <head>
     <title>Cupcake Flavor Management</title>
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href="index.css" rel="stylesheet"/>
+  </head>
+  <body>
+      <div class="header">The Cup <button class="create-button"> + Add New </button></div>
+      <div class="add-editbox hidden">
+        <div class="text">
+          <div class="title-input">
+            Title: <input id="title" type="text"/> 
+          </div>
+          <div class="cake-input">
+            Cake Type: <input id="cake" type="text"/> 
+          </div>
+          <div class="icing-input">
+            Icing Type: <input id="icing" type="text" />
+          </div>
+          <div class="sprinkles-input">
+            Has Sprinkles? <input id="sprinkles" type="checkbox"/>
+          </div>
+           <button id="save-donut"> Save </button>
+           <button id="cancel-button"> x </button>
+        </div>    
+       
+      </div>
+    <div id="big-box">
+       
+    </div>
+    <div class="footer">
+      <p class="logo"> Copyright 2015. Created by Taj. Eat some cupcakes.</p>
+    </div>
+
+    <template id ="cupcake-box">
+      <div class= "container">
+        <p>"{{title}}"</p>
+        <div class="cupcake-image">
+          <div class="{{url}} image"></div>
+        </div>
+        <div class= "cupcake-list">
+          <div> {{cake}} Cake with {{icing}} Icing </div>
+          {{#if sprinkles}}
+          <div> Comes with sprinkles! </div>
+          {{else}}
+          <div> </br></div>
+          {{/if}}
+          <div class="quantity">Qty: {{qty}} 
+            <img src="assets/arrow.png" class="up"/>
+             <img src="assets/arrow.png" class="down"/>
+
+          </div>
+        </div>
+        <div class="cupcake-buttons">
+          
+          <button class="edit-button">Edit</button>
+          <button class="delete-button">Eat me!</button>
+        </div>
+      </div>
+    </template>
 
     <script src="libs/underscore.js"></script>
     <script src="libs/jquery.js"></script>
     <script src="libs/handlebars.js"></script>
     <script src="libs/backbone.js"></script>
-
-  </head>
-  <body>
-    
     <script src="cupcakes.js"></script>
 
   </body>
